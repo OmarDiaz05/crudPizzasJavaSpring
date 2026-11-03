@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzas</title>
+</head>
+<body>
+    <h1>Pizzas</h1>
+
+    <a href="/pizzas/crear">Agregar nueva pizza</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pizza : ${pizzas}">
+                <td th:text="${pizza.nombre}"></td>
+                <td th:text="${pizza.descripcion}"></td>
+                <td th:text="${pizza.precio}"></td>
+                <td>
+                    <a th:href="@{/pizzas/editar/{id}(id=${pizza.id})}">Editar</a>
+                    <a th:href="@{/pizzas/borrar/{id}(id=${pizza.id})}" onclick="return confirm('¿Estás seguro de eliminar esta pizza?')">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Tamaño</title>
+</head>
+<body>
+    <h1>Editar Tamaño</h1>
+    <form th:action="@{/tamanos/actualizar/{id}(id=${tamano.id})}" method="post">
+        <label>Nombre:</label><br>
+        <input type="text" name="nombre" th:value="${tamano.nombre}" required><br><br>
+        <label>Descripción:</label><br>
+        <input type="text" name="descripcion" th:value="${tamano.descripcion}" required><br><br>
+        <button type="submit">Actualizar</button>
+        <a th:href="@{/tamanos}">Cancelar</a>
+    </form>
+</body>
+</html>

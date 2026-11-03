@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamaños</title>
+</head>
+<body>
+    <h1>Tamaños</h1>
+
+    <a href="/tamanos/crear">Agregar nuevo tamaño</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tamano : ${tamanos}">
+                <td th:text="${tamano.nombre}"></td>
+                <td th:text="${tamano.descripcion}"></td>
+                <td>
+                    <a th:href="@{/tamanos/editar/{id}(id=${tamano.id})}">Editar</a>
+                    <a th:href="@{/tamanos/borrar/{id}(id=${tamano.id})}" onclick="return confirm('¿Estás seguro de eliminar este tamaño?')">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
